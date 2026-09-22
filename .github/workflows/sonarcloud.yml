@@ -20,13 +20,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install pytest-cov
+          pip install --only-binary :all: -r requirements.txt
+          pip install --only-binary :all: pytest-cov
 
       - name: Run tests with coverage
         run: pytest --cov=app --cov-report=xml
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarcloud-github-action@ba3875ecf642
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

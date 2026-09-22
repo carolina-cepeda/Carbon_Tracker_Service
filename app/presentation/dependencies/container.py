@@ -6,7 +6,7 @@ from app.application.use_cases.get_history import GetHistoryUseCase
 from app.application.use_cases.export_report import ExportReportUseCase
 from app.domain.interfaces.factor_catalog import FactorCatalog
 from app.domain.interfaces.history_repository import HistoryRepository
-from app.domain.services.auth.token_verifier import TokenVerifier, Md5TokenVerifier
+from app.domain.services.auth.token_verifier import TokenVerifier, Pbkdf2TokenVerifier
 from app.infrastructure.composition import build_calculate_use_case, build_calculator_factory
 from app.infrastructure.config.settings import Settings, settings as app_settings
 from app.infrastructure.factors.ipcc_factors import IpccFactorCatalog
@@ -37,7 +37,7 @@ def get_history_repository(settings: Settings = Depends(get_settings)) -> Histor
 
 
 def get_token_verifier() -> TokenVerifier:
-    return Md5TokenVerifier()
+    return Pbkdf2TokenVerifier()
 
 
 def get_report_generator() -> ReportGeneratorService:

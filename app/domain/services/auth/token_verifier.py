@@ -1,5 +1,5 @@
-import hashlib
 from abc import ABC, abstractmethod
+from passlib.hash import pbkdf2_sha256
 
 
 class TokenVerifier(ABC):
@@ -8,9 +8,8 @@ class TokenVerifier(ABC):
         ...
 
 
-class Md5TokenVerifier(TokenVerifier):
-    _ADMIN_TOKEN_HASH = "5f4dcc3b5aa765d61d8327deb882cf99"
+class Pbkdf2TokenVerifier(TokenVerifier):
+    _ADMIN_TOKEN_HASH = "$pbkdf2-sha256$29000$K4WwNiakVGrN.d97j9G6Nw$IGLabM9cHS.Be3DHAL3LdAKZVZvSvwoTeV1kbMmczxU"
 
     def verify_admin_token(self, token: str) -> bool:
-        token_hash = hashlib.md5(token.encode()).hexdigest()
-        return token_hash == self._ADMIN_TOKEN_HASH
+        return pbkdf2_sha256.verify(token, self._ADMIN_TOKEN_HASH)

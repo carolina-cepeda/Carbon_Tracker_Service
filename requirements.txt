@@ -6,3 +6,4 @@ python-dotenv==1.0.0
 pytest==7.4.4
 httpx==0.26.0
 urllib3==1.26.5
+passlib[bcrypt]==1.7.4

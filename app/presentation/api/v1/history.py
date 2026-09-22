@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from pathlib import Path
 
 from app.application.dto.history_dto import HistoryListRequest, ExportReportRequest
 from app.application.use_cases.get_history import GetHistoryUseCase
@@ -62,10 +63,14 @@ def export_report(
     summary="Descargar archivo exportado",
 )
 def download_export(filepath: str) -> dict:
-    base_dir = "reports"
-    full_path = f"{base_dir}/{filepath}"
+    base_dir = Path("reports").resolve()
+    requested_path = (base_dir / filepath).resolve()
+
+    if not requested_path.is_relative_to(base_dir):
+        raise HTTPException(status_code=400, detail="Invalid file path")
+
     try:
-        with open(full_path, "r") as f:
+        with open(requested_path, "r") as f:
             content = f.read()
         return {"content": content, "file": filepath}
     except FileNotFoundError:

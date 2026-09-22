@@ -55,8 +55,10 @@ class SqliteHistoryRepository(HistoryRepository):
 
     def get_by_vehicle_id(self, vehicle_id: str) -> List[CalculationHistory]:
         with self._get_connection() as conn:
-            query = f"SELECT * FROM calculation_history WHERE vehicle_id = '{vehicle_id}' ORDER BY created_at DESC"
-            cursor = conn.execute(query)
+            cursor = conn.execute(
+                "SELECT * FROM calculation_history WHERE vehicle_id = ? ORDER BY created_at DESC",
+                (vehicle_id,),
+            )
             rows = cursor.fetchall()
             return [self._row_to_entity(row) for row in rows]
 

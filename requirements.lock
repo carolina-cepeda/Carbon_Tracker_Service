@@ -1,0 +1,23 @@
+# This file was generated with pip-compile / pip-hash for reproducible installs
+# Run: pip install --require-hashes -r requirements.lock
+
+bcrypt==5.0.0 \
+    --hash=sha256:611f0a17aa4a25a69362dcc299fda5c8a3d4f160e2abb3831041feb77393a14a
+fastapi==0.109.0 \
+    --hash=sha256:8c77515984cd8e8cfeb58364f8cc7a28f0692088475e2614f7bf03275eba9093
+httpx==0.26.0 \
+    --hash=sha256:8915f5a3627c4d47b73e8202457cb28f1266982d1159bd5779d86a80c0eab1cd
+passlib==1.7.4 \
+    --hash=sha256:aa6bca462b8d8bda89c70b382f0c298a20b5560af6cbfa2dce410c0a2fb669f1
+pydantic==2.5.3 \
+    --hash=sha256:d0caf5954bee831b6bfe7e338c32b9e30c85dfe080c843680783ac2b631673b4
+pydantic-settings==2.1.0 \
+    --hash=sha256:7621c0cb5d90d1140d2f0ef557bdf03573aac7035948109adf2574770b77605a
+pytest==7.4.4 \
+    --hash=sha256:b090cdf5ed60bf4c45261be03239c2c1c22df034fbffe691abe93cd80cea01d8
+python-dotenv==1.0.0 \
+    --hash=sha256:f5971a9226b701070a4bf2c38c89e5a3f0d64de8debda981d1db98583009122a
+urllib3==1.26.5 \
+    --hash=sha256:753a0374df26658f99d826cfe40394a686d05985786d946fbe4165b5148f5a7c
+uvicorn==0.27.0 \
+    --hash=sha256:890b00f6c537d58695d3bb1f28e23db9d9e7a17cbcc76d7457c499935f933e24

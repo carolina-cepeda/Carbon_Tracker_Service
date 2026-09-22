@@ -20,8 +20,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --only-binary :all: -r requirements.txt
-          pip install --only-binary :all: pytest-cov
+          pip install --only-binary :all: --require-hashes -r requirements.lock
+          pip install --only-binary :all: --require-hashes pytest-cov==4.1.0 \
+            --hash=sha256:6ba70b9e97e69fcc3fb45bfeab2d0a138fb65c4d0d6a41ef33983ad114be8c3a
 
       - name: Run tests with coverage
         run: pytest --cov=app --cov-report=xml
